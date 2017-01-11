@@ -1,0 +1,92 @@
+apply plugin: 'com.android.application'
+apply from: 'config.gradle'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.1"
+
+    defaultConfig {
+        applicationId "com.yunwei.frame"
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.1.0"
+        multiDexEnabled true
+
+        /*设置支持的CPU类型*/
+        ndk {
+            abiFilters 'armeabi'
+        }
+    }
+    /*签名文件*/
+    signingConfigs {
+        config {
+            keyAlias 'yunwei'
+            keyPassword 'yunwei@163.com'
+            storeFile file('yunwei.keystore.jks')
+            storePassword 'yunwei@163.com'
+        }
+    }
+    /*打包输出*/
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                def fileName = outputFile.name.replace(".apk", "yunwei_${currentTime()}_V${defaultConfig.versionCode}.${defaultConfig.versionName}.apk")
+                output.outputFile = new File(outputFile.parent, fileName)
+            }
+        }
+    }
+
+    /*APK打包配制*/
+    buildTypes {
+        release {
+            signingConfig signingConfigs.config
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.config
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dependencies {
+        compile 'com.android.support:multidex:1.0.0'
+    }
+}
+/*获取系统当前时间*/
+def currentTime() {
+    return new Date().format("yyyyMMdd")
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        maven {
+            url "https://jitpack.io"
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:25.0.1'
+    compile 'com.android.support:design:25.0.1'
+    compile project(':ZN_ArcGis_SDK')
+    /*依赖注入*/
+    compile 'com.jakewharton:butterknife:8.4.0'
+    compile 'com.jakewharton:butterknife-compiler:8.4.0'
+    /*图片加载*/
+    compile 'com.github.bumptech.glide:glide:latest.release'
+    /*Eventbus*/
+    compile 'org.greenrobot:eventbus:3.0.0'
+    /*retrofit 网络请求框架*/
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    /*七牛*/
+    compile 'com.qiniu:qiniu-android-sdk:7.3.+'
+}

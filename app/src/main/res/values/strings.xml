@@ -1,0 +1,81 @@
+<resources>
+    <string name="app_name">YunWei</string>
+
+    <!--Main Tab-->
+    <string name="main_home_tab">主页</string>
+    <string name="main_mission_tab">任务</string>
+    <string name="main_track_tab">足迹</string>
+    <string name="main_record_tab">历史</string>
+    <string name="main_mine_tab">我的</string>
+
+    <!--设置-->
+    <string name="set_user_info">个人信息</string>
+    <string name="set_msg_info">消息提醒</string>
+    <string name="set_track_info">足迹记录</string>
+    <string name="set_idea_str">意见反馈</string>
+    <string name="set_about">关于</string>
+    <string name="exit">退出</string>
+    <string name="change_user">切换用户</string>
+
+    <!-- Dilaog -->
+    <string name="dialog_defalut_title">标题</string>
+    <string name="dialog_defalut_confirm_text">确定</string>
+    <string name="dialog_defalut_cancel_text">取消</string>
+    <string name="loading_defalut_dialog_text">加载中&#8230;</string>
+    <string name="exit_msg">你确定要退出</string>
+    <string name="switch_user_msg">是否注销当前用户?</string>
+    <string name="login_dialog">登录&#8230;</string>
+
+    <!--Title-->
+    <string name="title_select_pictrue">图片选择</string>
+    <string name="title_user_info_edit">编辑</string>
+    <string name="title_edit_user_info">个人信息修改</string>
+    <string name="title_edit_user_pwd">重置密码</string>
+    <string name="title_submit">提交</string>
+
+    <!--Dialog title-->
+    <string name="dialog_title_exit">退出提示</string>
+    <string name="dialog_title_switch_user">切换提示</string>
+
+    <!--Dialog-->
+    <string name="dialog_msg_modify_head">头像修改&#8230;</string>
+    <string name="dialog_msg_modify_pwd">密码修改&#8230;</string>
+
+    <!--Toast-->
+    <string name="invalid_network">当前网络不可用!</string>
+    <string name="toast_modify_head_failure">图像修改失败!</string>
+    <string name="toast_modify_head_success">图像修改成功!</string>
+    <string name="toast_pwd_old_null">原密码不能为空</string>
+    <string name="toast_pwd_new_null">新密码不能为空</string>
+    <string name="toast_pwd_not_dis">原密码错误</string>
+    <string name="toast_modify_pwd_faliure">密码修改失败</string>
+    <string name="toast_modify_pwd_success">密码修改成功</string>
+
+    <!--登录-->
+    <string name="account_not_null">账号不能为空</string>
+    <string name="pwd_not_null">密码不能为空</string>
+    <string name="login_failure">登录失败</string>
+    <string name="account_pwd_error">账号或密码错误</string>
+
+    <string name="foregroun_content_text">定位服务正在运行</string>
+    <string name="empty_str">暂无数据</string>
+
+    <!--RecyclerView底部加载显示信息-->
+    <string name="recycler_view_item_foot_loading">加载更多&#8230;</string>
+
+    <string name="colon_breaker">\t:</string>
+
+    <!--足迹方式-->
+    <array name="track_mode">
+        <item>步行</item>
+        <item>骑行</item>
+        <item>驾驶</item>
+    </array>
+    <!--历史记录-->
+    <string-array name="record_tab">
+        <item>任务</item>
+        <item>设施</item>
+        <item>隐患</item>
+        <item>维修</item>
+    </string-array>
+</resources>

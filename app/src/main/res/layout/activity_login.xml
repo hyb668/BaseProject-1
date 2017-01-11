@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:edit="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/login_bj"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dip"
+        android:src="@mipmap/login_logo_white" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical">
+
+
+        <com.yunwei.frame.widget.ResetEditView
+            android:id="@+id/loginActivity_account_editView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            edit:edite_icon="@mipmap/login_user" />
+
+        <com.yunwei.frame.widget.ResetEditView
+            android:id="@+id/loginActivity_password_editView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            edit:edit_inputType="password"
+            edit:edite_icon="@mipmap/login_mima" />
+
+        <Button
+            android:id="@+id/loginActivity_login_button"
+            style="@style/default_button_style"
+            android:layout_marginTop="50dip"
+            android:background="@drawable/button_white_selector"
+            android:text="登录" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

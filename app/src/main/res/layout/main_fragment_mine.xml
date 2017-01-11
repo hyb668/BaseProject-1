@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.yunwei.frame.view.ReboundScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include layout="@layout/user_info_head_layout" />
+
+            <TextView
+                android:id="@+id/MineFragment_Message_seting_textView"
+                style="@style/seting_item_layout"
+                android:drawableLeft="@mipmap/icon_message"
+                android:drawableRight="@mipmap/arrow_right"
+                android:text="@string/set_msg_info" />
+
+            <View style="@style/line" />
+
+            <TextView
+                android:id="@+id/MineFragment_Track_seting_textView"
+                style="@style/seting_item_layout"
+                android:drawableLeft="@mipmap/icon_setup"
+                android:drawableRight="@mipmap/arrow_right"
+                android:text="@string/set_track_info" />
+
+            <View style="@style/line" />
+
+            <View
+                style="@style/line"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                android:id="@+id/MineFragment_about_textView"
+                style="@style/seting_item_layout"
+                android:drawableLeft="@mipmap/icon_about"
+                android:drawableRight="@mipmap/arrow_right"
+                android:text="@string/set_about" />
+
+            <View style="@style/line" />
+
+            <View
+                style="@style/line"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                android:id="@+id/MineFragment_switch_user_textView"
+                style="@style/seting_item_layout"
+                android:drawableLeft="@mipmap/icon_switch_user"
+                android:drawableRight="@mipmap/arrow_right"
+                android:text="@string/change_user" />
+
+            <View style="@style/line" />
+
+            <TextView
+                android:id="@+id/MineFragment_exit_textView"
+                style="@style/seting_item_layout"
+                android:drawableLeft="@mipmap/icon_quit"
+                android:drawableRight="@mipmap/arrow_right"
+                android:text="@string/exit" />
+
+            <View style="@style/line" />
+
+        </LinearLayout>
+    </com.yunwei.frame.view.ReboundScrollView>
+</LinearLayout>
