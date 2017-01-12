@@ -11,6 +11,8 @@ import com.yunwei.frame.common.Constant;
 import com.yunwei.frame.function.account.data.UserInfoEntity;
 import com.yunwei.frame.service.MonitorService;
 import com.yunwei.frame.utils.ISpfUtil;
+import com.yunwei.frame.utils.IStringUtils;
+import com.yunwei.frame.vendor.baiduTrack.BaiduTrack;
 import com.yunwei.frame.vendor.qiniu.QiNiuConfig;
 
 /**
@@ -33,12 +35,16 @@ public class DataApplication extends Application {
     /*监控服务*/
     private MonitorService monitorService;
 
+    /*百度Track*/
+    protected BaiduTrack baiduTrack;
+
     @Override
     public void onCreate() {
         super.onCreate();
         /*分包处理 DEX*/
         MultiDex.install(getApplicationContext());
         instance = this;
+
         /*初始化七年配制*/
         QiNiuConfig.iniConfig(BuildConfig.QINIU_DOMAIN, BuildConfig.QINIU_FILENAME);
     }
@@ -89,6 +95,43 @@ public class DataApplication extends Application {
         locationClientOption = null;
         if (mLocationClient != null) {
             mLocationClient.onDestroy();
+        }
+    }
+
+    /**
+     * 初始化百度鹰眼服务
+     */
+    private void initBaiduTrack() {
+        if (baiduTrack == null) {
+            baiduTrack = BaiduTrack.getInstance();
+            baiduTrack.setSERVICE_ID(BuildConfig.BAIDUTRACK_SERVICE_ID);
+            baiduTrack.setENTITY_NAME(BuildConfig.BAIDUTRACK_ENTITY_NAME+ ISpfUtil.getValue(Constant.ACCESS_TOKEN_KEY,"").toString());
+        }
+    }
+
+    /**
+     * 启动百度Track服务
+     */
+    public void startBaiduTrack() {
+        initBaiduTrack();
+        baiduTrack.startTrace(getApplicationContext());
+    }
+
+    /**
+     * 停止百度Track服务
+     */
+    public void stopBaiduTrack() {
+        if (baiduTrack!=null){
+            baiduTrack.stopTrace();
+        }
+    }
+
+    /**
+     * 注销百度Track
+     */
+    public void destroyBaiduTrack(){
+        if (baiduTrack!=null){
+            baiduTrack.destroy();
         }
     }
 
