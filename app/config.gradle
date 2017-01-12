@@ -34,6 +34,10 @@ android {
         buildConfigField "String", "BAIDUTTS_APP_KEY", "\"enf7UI6Lddbkp5ORGgyrtAeh\""
         /*百度语音SECRET_KEY*/
         buildConfigField "String", "BAIDUTTS_SECRET_KEY", "\"8fafb25541c3c0d0706c04b5f36d5eca\""
+        /*百度鹰眼Service ID*/
+        buildConfigField "Integer","BAIDUTRACK_SERVICE_ID","service_id";
+        /*百度鹰眼Entity Name*/
+        buildConfigField "String","BAIDUTRACK_ENTITY_NAME","wt_xx_";
         /*七牛文件名*/
         buildConfigField "String", "QINIU_FILENAME", "\"wayto_base\""
         /*设施图层*/
