@@ -108,7 +108,12 @@ public class PullToRefreshRecyclerView extends LinearLayout implements SwipeRefr
      * 取消下拉刷新
      */
     public void closeDownRefresh() {
-        pullToRefreshSwipeRefreshLayout.setRefreshing(false);
+        pullToRefreshSwipeRefreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                pullToRefreshSwipeRefreshLayout.setRefreshing(false);
+            }
+        });
     }
 
     /**
