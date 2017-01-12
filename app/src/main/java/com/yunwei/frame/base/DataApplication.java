@@ -1,6 +1,7 @@
 package com.yunwei.frame.base;
 
 import android.app.Application;
+import android.content.Context;
 import android.support.multidex.MultiDex;
 
 import com.amap.api.location.AMapLocationClient;
@@ -41,8 +42,6 @@ public class DataApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        /*分包处理 DEX*/
-        MultiDex.install(getApplicationContext());
         instance = this;
 
         /*初始化七年配制*/
@@ -51,6 +50,13 @@ public class DataApplication extends Application {
 
     public static DataApplication getInstance() {
         return instance;
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        /*分包处理 DEX*/
+        MultiDex.install(getApplicationContext());
     }
 
     /**
@@ -105,7 +111,7 @@ public class DataApplication extends Application {
         if (baiduTrack == null) {
             baiduTrack = BaiduTrack.getInstance();
             baiduTrack.setSERVICE_ID(BuildConfig.BAIDUTRACK_SERVICE_ID);
-            baiduTrack.setENTITY_NAME(BuildConfig.BAIDUTRACK_ENTITY_NAME+ ISpfUtil.getValue(Constant.ACCESS_TOKEN_KEY,"").toString());
+            baiduTrack.setENTITY_NAME(BuildConfig.BAIDUTRACK_ENTITY_NAME + ISpfUtil.getValue(Constant.ACCESS_TOKEN_KEY, "").toString());
         }
     }
 
@@ -121,7 +127,7 @@ public class DataApplication extends Application {
      * 停止百度Track服务
      */
     public void stopBaiduTrack() {
-        if (baiduTrack!=null){
+        if (baiduTrack != null) {
             baiduTrack.stopTrace();
         }
     }
@@ -129,8 +135,8 @@ public class DataApplication extends Application {
     /**
      * 注销百度Track
      */
-    public void destroyBaiduTrack(){
-        if (baiduTrack!=null){
+    public void destroyBaiduTrack() {
+        if (baiduTrack != null) {
             baiduTrack.destroy();
         }
     }
