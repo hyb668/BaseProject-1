@@ -12,7 +12,6 @@ import com.yunwei.frame.common.Constant;
 import com.yunwei.frame.function.account.data.UserInfoEntity;
 import com.yunwei.frame.service.MonitorService;
 import com.yunwei.frame.utils.ISpfUtil;
-import com.yunwei.frame.utils.IStringUtils;
 import com.yunwei.frame.vendor.baiduTrack.BaiduTrack;
 import com.yunwei.frame.vendor.qiniu.QiNiuConfig;
 
