@@ -23,8 +23,9 @@ public class BaseFragment extends Fragment {
      * 消息处理Handler
      */
     protected BaseHandler mHandler;
-
+    /*定义加载Dialog*/
     protected Dialog loadDialog;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
