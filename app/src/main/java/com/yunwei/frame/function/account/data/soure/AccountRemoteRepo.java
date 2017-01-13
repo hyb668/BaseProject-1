@@ -77,7 +77,7 @@ public class AccountRemoteRepo implements AccountDataSoure {
     }
 
     @Override
-    public void modifyHead(final String path, final ModifyHeadCallBack callBack) {
+    public void modifyHead(final String filePath, final ModifyHeadCallBack callBack) {
         if (!INetWorkUtil.isNetworkAvailable(DataApplication.getInstance())) {
             callBack.onModifyHeadFailure(IUtil.getStrToRes(R.string.invalid_network));
             return;
@@ -85,7 +85,7 @@ public class AccountRemoteRepo implements AccountDataSoure {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                String cachePath = BitmapUtil.compressBitmap(path, IFileUtils.getImageCatchDir());
+                String cachePath = BitmapUtil.compressBitmap(filePath, IFileUtils.getImageCatchDir());
                 if (!TextUtils.isEmpty(cachePath)) {
                     QiNiuImageUploadManager.uploadImage(ISpfUtil.getValue(Constant.QINIU_TOKEN_KEY, "").toString(), cachePath, new UploadCallBackListener() {
                         @Override
@@ -106,6 +106,7 @@ public class AccountRemoteRepo implements AccountDataSoure {
                         @Override
                         public void onUploadComplete(List<String> path) {
                             if (path != null && path.size() > 0) {
+                                IFileUtils.delete(filePath);
                                 updateUserInfo(callBack.getHeadBody(path.get(0)), callBack);
                             }
                         }
