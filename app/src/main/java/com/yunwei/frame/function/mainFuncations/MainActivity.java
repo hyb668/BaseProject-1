@@ -1,6 +1,7 @@
 package com.yunwei.frame.function.mainFuncations;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
@@ -26,7 +27,10 @@ import com.yunwei.frame.base.BaseActivity;
 import com.yunwei.frame.base.DataApplication;
 import com.yunwei.frame.function.mainFuncations.data.soure.MainRemoteRepo;
 import com.yunwei.frame.function.mainFuncations.homeModule.HomeFragment;
+import com.yunwei.frame.function.mainFuncations.mineModule.CheckAppVersion.CheckAppVersionContract;
+import com.yunwei.frame.function.mainFuncations.mineModule.CheckAppVersion.CheckAppVersionPresenter;
 import com.yunwei.frame.function.mainFuncations.mineModule.MineFragment;
+import com.yunwei.frame.function.mainFuncations.mineModule.data.source.CheckAppVersionRemoteRepo;
 import com.yunwei.frame.function.mainFuncations.missionModule.MissionFragment;
 import com.yunwei.frame.function.mainFuncations.recordModule.RecordFragment;
 import com.yunwei.frame.function.mainFuncations.trackModule.TrackFragment;
@@ -49,7 +53,7 @@ import butterknife.ButterKnife;
  * @date 2016/11/22 15:40
  */
 
-public class MainActivity extends BaseActivity implements MainBottomNavigationBar.BottomTabSelectedListener, MainContract.MainView {
+public class MainActivity extends BaseActivity implements MainBottomNavigationBar.BottomTabSelectedListener, MainContract.MainView,CheckAppVersionContract.View {
     private final String TAG = getClass().getSimpleName();
 
     /*模块标记*/
@@ -67,6 +71,7 @@ public class MainActivity extends BaseActivity implements MainBottomNavigationBa
     MapView mapView;
 
     private MainPresenter mMainPresenter;
+    private CheckAppVersionPresenter versionPresenter;
 
     /*Service*/
     private MonitorService monitorService;
@@ -149,6 +154,9 @@ public class MainActivity extends BaseActivity implements MainBottomNavigationBa
     private void initPresenter() {
         mMainPresenter = new MainPresenter(MainRemoteRepo.newInstance(), this);
         mMainPresenter.reqQiNiuToken();
+
+        versionPresenter=new CheckAppVersionPresenter(CheckAppVersionRemoteRepo.newInstance(),this);
+        versionPresenter.checkAppVersion();
     }
 
     /**
@@ -233,6 +241,31 @@ public class MainActivity extends BaseActivity implements MainBottomNavigationBa
                 mapView.setVisibility(View.GONE);
                 break;
         }
+    }
+
+    @Override
+    public void showRequestFail() {
+
+    }
+
+    @Override
+    public void showIsLatestVersion() {
+
+    }
+
+    @Override
+    public void showCheckingDialog() {
+
+    }
+
+    @Override
+    public void dismissCheckingDialog() {
+
+    }
+
+    @Override
+    public Activity getActivity() {
+        return this;
     }
 
     @Override

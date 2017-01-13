@@ -7,8 +7,10 @@ import com.yunwei.frame.function.account.data.ModifyHeadEntity;
 import com.yunwei.frame.function.account.data.ModifyPasswordEntity;
 import com.yunwei.frame.function.account.data.UserInfoEntity;
 import com.yunwei.frame.function.mainFuncations.data.QiNiuTokenEntity;
+import com.yunwei.frame.function.mainFuncations.mineModule.data.AppVersionEntity;
 
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -16,6 +18,7 @@ import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
+import retrofit2.http.Url;
 
 /**
  * @author hezhiWu
@@ -60,5 +63,22 @@ public interface APIService {
      */
     @GET(BuildConfig.QINIU_TOKEN_URL)
     Call<ResponseModel<QiNiuTokenEntity>> reqQiniuToken();
+
+    /**
+     * 版本检测
+     *
+     * @return
+     */
+    @GET(BuildConfig.CHECK_APP_VERSION_URL)
+    Call<ResponseModel<AppVersionEntity>> checkAppVersion();
+
+    /**
+     * 文件下载
+     *
+     * @param url
+     * @return
+     */
+    @GET
+    Call<ResponseBody> downloadFile(@Url String url);
 
 }

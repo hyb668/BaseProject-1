@@ -3,9 +3,14 @@ package com.yunwei.frame.utils;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 
+import com.yunwei.frame.base.DataApplication;
+
+import java.io.File;
 import java.util.List;
 
 /**
@@ -23,11 +28,11 @@ public class ISystemUtil {
      *
      * @return 当前应用的版本名
      */
-    public static String getVersionName(Activity activity) {
+    public static String getVersionName() {
         String versionName = "";
         try {
-            PackageManager manager = activity.getPackageManager();
-            PackageInfo info = manager.getPackageInfo(activity.getPackageName(), 0);
+            PackageManager manager = DataApplication.getInstance().getPackageManager();
+            PackageInfo info = manager.getPackageInfo(DataApplication.getInstance().getPackageName(), 0);
             versionName = info.versionName;
         } catch (Exception e) {
             e.printStackTrace();
@@ -40,11 +45,11 @@ public class ISystemUtil {
      *
      * @return 当前应用的版本号
      */
-    public static int getVersionCode(Activity activity) {
+    public static int getVersionCode() {
         int versionCode = 0;
         try {
-            PackageManager manager = activity.getPackageManager();
-            PackageInfo info = manager.getPackageInfo(activity.getPackageName(), 0);
+            PackageManager manager = DataApplication.getInstance().getPackageManager();
+            PackageInfo info = manager.getPackageInfo(DataApplication.getInstance().getPackageName(), 0);
             versionCode = info.versionCode;
         } catch (Exception e) {
             e.printStackTrace();
@@ -75,5 +80,17 @@ public class ISystemUtil {
             }
         }
         return isWork;
+    }
+
+    /**
+     * 安装
+     *
+     * @param context
+     */
+    public static void installAPK(Context context, String url) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+        intent.setDataAndType(Uri.fromFile(new File(url)), "application/vnd.android.package-archive");
+        context.startActivity(intent);
     }
 }

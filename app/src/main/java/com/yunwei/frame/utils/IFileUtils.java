@@ -23,6 +23,8 @@ public class IFileUtils {
     public static final String IMAGE_DEIRECTORY = "image";
     /*缓存文件夹*/
     public static final String IMAGE_CATCH_DIR = "catch";
+    /*下载目录*/
+    public static final String DOWNLOAD_DIR = "download";
 
     /**
      * 获取SD卡根目录
@@ -46,5 +48,14 @@ public class IFileUtils {
             filePath.mkdirs();
         }
         return file.getAbsolutePath();
+    }
+
+    /**
+     * 下载目录
+     *
+     * @return
+     */
+    public static String getDownloadDir() {
+        return getSDROOT() + File.separator + FILE_ROOT_DIRECTORY + File.separator + PROJECT_ROOT_DIRECTORY + File.separator + DOWNLOAD_DIR;
     }
 }

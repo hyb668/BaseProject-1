@@ -49,6 +49,8 @@ android {
          */
         /*七年Token URL*/
         buildConfigField "String", "QINIU_TOKEN_URL", "\"v3/config/qiniu\""
+        /*版本更新*/
+        buildConfigField "String", "CHECK_APP_VERSION_URL", "\"v2/config/ver\""
 
         /*------------------------------------------------------------------------------*/
         /**

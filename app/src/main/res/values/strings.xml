@@ -40,6 +40,7 @@
     <!--Dialog-->
     <string name="dialog_msg_modify_head">头像修改&#8230;</string>
     <string name="dialog_msg_modify_pwd">密码修改&#8230;</string>
+    <string name="dialog_msg_check_app_ver">检测&#8230;</string>
 
     <!--Toast-->
     <string name="invalid_network">当前网络不可用!</string>
@@ -50,6 +51,8 @@
     <string name="toast_pwd_not_dis">原密码错误</string>
     <string name="toast_modify_pwd_faliure">密码修改失败</string>
     <string name="toast_modify_pwd_success">密码修改成功</string>
+    <string name="toast_version_later">已是最新版本</string>
+    <string name="taost_version_failure">版本检测失败</string>
 
     <!--登录-->
     <string name="account_not_null">账号不能为空</string>
